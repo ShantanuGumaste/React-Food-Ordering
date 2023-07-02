@@ -1,4 +1,4 @@
-import Card from '../UI/Card';
+import {Card, Row} from 'react-bootstrap';
 import MealItem from './MealItem/MealItem';
 import classes from './AvailableMeals.module.css';
 import { useEffect, useState } from 'react';
@@ -11,7 +11,7 @@ const AvailableMeals = () => {
   useEffect(()=>{
     const fetchData = async () => {
       try {
-        const response = await fetch("http://localhost:3000/products");
+        const response = await fetch("http://localhost:5000/");
         if (!response.ok) {
           throw new Error("Request failed with status " + response.status);
         }
@@ -26,19 +26,20 @@ const AvailableMeals = () => {
 
   const mealsList = products.map((meal) => (
     <MealItem
-      key={meal.id}
-      id={meal.id}
+      key={meal._id}
+      id={meal._id}
       name={meal.name}
       description={meal.description}
       price={meal.price}
+      restaurant={meal.restaurant}
+      image={meal.image}
     />
   ));
 
   return (
     <section className={classes.meals}>
-      <Card>
-        <ul>{mealsList.length === 0 ? "No Meals available" : mealsList}</ul>
-      </Card>
+      <h2 className='text-center text-danger'>Most Ordered Meals</h2>
+        <Row>{mealsList.length === 0 ? "No Meals available" : mealsList}</Row>
     </section>
   );
 };

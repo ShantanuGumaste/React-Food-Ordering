@@ -2,6 +2,7 @@ import { useRef, useState } from 'react';
 
 import Input from '../../UI/Input';
 import classes from './MealItemForm.module.css';
+import { Col, Row } from 'react-bootstrap';
 
 const MealItemForm = (props) => {
   const [amountIsValid, setAmountIsValid] = useState(true);
@@ -23,24 +24,31 @@ const MealItemForm = (props) => {
     }
 
     props.onAddToCart(enteredAmountNumber);
+    window.scrollTo({top: 0, left: 0, behavior:"instant"});
   };
 
   return (
     <form className={classes.form} onSubmit={submitHandler}>
-      <Input
-        ref={amountInputRef}
-        label='Amount'
-        input={{
-          id: 'amount_' + props.id,
-          type: 'number',
-          min: '1',
-          max: '5',
-          step: '1',
-          defaultValue: '1',
-        }}
-      />
-      <button>+ Add</button>
-      {!amountIsValid && <p>Please enter a valid amount (1-5).</p>}
+      <Row>
+      <Col>
+        <Input
+          ref={amountInputRef}
+          label="QTY"
+          input={{
+            id: "amount_" + props.id,
+            type: "number",
+            min: "1",
+            max: "5",
+            step: "1",
+            defaultValue: "1",
+          }}
+        />
+        </Col>
+        <Col>
+        <button>Add</button>
+        {!amountIsValid && <p>Please enter a valid amount (1-5).</p>}
+      </Col>
+      </Row>
     </form>
   );
 };
