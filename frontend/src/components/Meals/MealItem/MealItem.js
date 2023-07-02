@@ -3,7 +3,7 @@ import { useContext } from "react";
 import MealItemForm from "./MealItemForm";
 import classes from "./MealItem.module.css";
 import CartContext from "../../../store/cart-context";
-import { Card, Col } from "react-bootstrap";
+import { Card, Col, Row } from "react-bootstrap";
 
 const MealItem = (props) => {
   const cartCtx = useContext(CartContext);
@@ -26,9 +26,16 @@ const MealItem = (props) => {
         <Card.Img height={230} src={props.image} variant="top" />
         <Card.Body>
           <Card.Title>
-            <strong>
-              {props.name} <br /> ({props.restaurant})
-            </strong>
+            <Row>
+              <Col lg={7}>
+                <strong>
+                  {props.name} <br /> ({props.restaurant})
+                </strong>
+              </Col>
+              <Col lg={5}>
+                <div className={classes.price}>{price}</div>
+              </Col>
+            </Row>
           </Card.Title>
           <div className="mt-3">
             <MealItemForm id={props.id} onAddToCart={addToCartHandler} />
