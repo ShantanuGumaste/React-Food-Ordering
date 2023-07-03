@@ -1,6 +1,5 @@
-const products = [
+const meals = [
   {
-    _id: 1,
     name: "Thin Crust Pizza",
     image: "images/thinCrustPizza.jpeg",
     description:
@@ -13,7 +12,6 @@ const products = [
     numReviews: 12,
   },
   {
-    _id: 2,
     name: "Chicken Biryani",
     image: "images/biryani.jpeg",
     description:
@@ -26,7 +24,6 @@ const products = [
     numReviews: 8,
   },
   {
-    _id: 3,
     name: "Veg Thali",
     image: "images/vegThali.jpeg",
     description:
@@ -39,7 +36,6 @@ const products = [
     numReviews: 12,
   },
   {
-    _id: 4,
     name: "Mc Maharaja Burger",
     image: "images/mcMaharaja.jpeg",
     description:
@@ -52,7 +48,6 @@ const products = [
     numReviews: 12,
   },
   {
-    _id: 5,
     name: "Bombay Grilled",
     image: "images/bombayGrilled.jpeg",
     description:
@@ -65,7 +60,6 @@ const products = [
     numReviews: 10,
   },
   {
-    _id: 6,
     name: "Chocolate Pastry",
     image: "images/pastry.jpeg",
     description:
@@ -79,4 +73,4 @@ const products = [
   },
 ];
 
-export default products;
+export default meals;
