@@ -4,6 +4,7 @@ import MealItemForm from "./MealItemForm";
 import classes from "./MealItem.module.css";
 import CartContext from "../../../store/cart-context";
 import { Card, Col, Row } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 const MealItem = (props) => {
   const cartCtx = useContext(CartContext);
@@ -23,14 +24,18 @@ const MealItem = (props) => {
   return (
     <Col sm={12} md={6} lg={4} xl={4}>
       <Card className="my-3 p-3 rounded">
+      <Link to={`/${props.id}`}>
         <Card.Img height={230} src={props.image} variant="top" />
+        </Link>
         <Card.Body>
           <Card.Title>
             <Row>
               <Col lg={7}>
-                <strong>
-                  {props.name} <br /> ({props.restaurant})
-                </strong>
+                <Link to={`/${props.id}`}>
+                  <strong>
+                    {props.name} <br /> ({props.restaurant})
+                  </strong>
+                </Link>
               </Col>
               <Col lg={5}>
                 <div className={classes.price}>{price}</div>

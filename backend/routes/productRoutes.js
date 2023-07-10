@@ -9,4 +9,10 @@ router.get("/", asyncHandler(async (req, res) => {
     res.json(meals)
 }));
 
+router.get("/:id", asyncHandler(async (req, res) => {
+    const meal_id = req.params.id;
+    const meal = await Meals.findById(meal_id);
+    res.json(meal)
+}));
+
 export default router
