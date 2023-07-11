@@ -3,6 +3,7 @@ import cors from "cors"
 import dotenv from "dotenv"
 import connectDB from "./config/db.js"
 import productRoutes from "./routes/productRoutes.js"
+import Order from "./models/orderModel.js"
 dotenv.config()
 
 const port = process.env.PORT;
@@ -16,9 +17,9 @@ app.use(cors());
 
 app.use('/api/meals', productRoutes)
 
-app.get('/api/meals/:id', async(req, res) => {
-    const meal = await Meals.findById(req.params.id);
-    res.json(meal)
+app.get('/api/orders/:id', async(req, res) => {
+    const order = await Order.find({user: req.params.id});
+    res.json(order)
 })
 
 app.listen(port, ()=>{
