@@ -5,6 +5,9 @@ import Meals from './components/Meals/Meals';
 import Cart from './components/Cart/Cart';
 import CartProvider from './store/CartProvider';
 import Footer from './components/Layout/Footer';
+import {Routes, Route} from 'react-router-dom'
+import MealPage from './components/Meals/MealPage';
+import MyOrders from './components/Profile/Orders/MyOrders';
 
 function App() {
   const [cartIsShown, setCartIsShown] = useState(false);
@@ -22,10 +25,19 @@ function App() {
     <CartProvider>
       {cartIsShown && <Cart onClose={hideCartHandler} />}
       <Header onShowCart={showCartHandler} />
-      <main>
-        <Meals />
-      </main>
-      <Footer/>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <main>
+              <Meals />
+            </main>
+          }
+        />
+        <Route path='/:id' element={<MealPage/>}/>
+        <Route path='/myOrders/:id' element={<MyOrders/>}/>
+      </Routes>
+      <Footer />
     </CartProvider>
   );
 }
